@@ -1,15 +1,31 @@
-# State Management #
-## Single State Tree ##
-#### Create Store ####
+#### Store ####
 ```js
 const store = new Vuex.Store({
   state: {
+    todos: [
+      { id: 1, text: '...', done: true },
+      { id: 2, text: '...', done: false }
+    ],  
     count: 0
   },
+  
+  // this changes state
   mutations: {
     increment (state) {
       state.count++
     }
+  },
+  
+  // this allows centralizing computed from Components to store
+  getters: {
+    doneTodos: state => {
+      return state.todos.filter(todo => todo.done)
+    },
+    
+    // this allows calls like store.getters.getTodoById(2)
+    getTodoById: (state) => (id) => {
+      return state.todos.find(todo => todo.id === id)
+    }    
   }
 })
 ```
