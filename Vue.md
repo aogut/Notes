@@ -78,19 +78,36 @@ console.log(store.state.count)
 this.$store.state.count
 ```
 
-#### mapState Helper ####
+#### Modules ####
+```js
+const moduleA = {
+  state: { ... },
+  mutations: { ... },
+  actions: { ... },
+  getters: { ... }
+}
+
+const store = new Vuex.Store({
+  modules: {
+    a: moduleA,
+    b: moduleB
+  }
+})
+
+store.state.a // -> `moduleA`'s state
+store.state.b // -> `moduleB`'s state
+```
+
+
+#### Helpers ####
 ```js
 import { mapState } from 'vuex'
 
 export default {
-  // ...
   computed: mapState({
-    // arrow functions can make the code very succinct!
     count: state => state.count,
-
-    // passing the string value 'count' is same as `state => state.count`
     countAlias: 'count',
-
+    
     // to access local state with `this`, a normal function must be used
     countPlusLocalState (state) {
       return state.count + this.localCount
