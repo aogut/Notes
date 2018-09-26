@@ -13,6 +13,12 @@ const store = new Vuex.Store({
   mutations: {
     increment (state) {
       state.count++
+    },
+    incrementBy (state, n) {
+      state.count += n
+    },
+    incrementByObject (state, payload) {
+      state.count += payload.amount
     }
   },
   
@@ -33,6 +39,15 @@ const store = new Vuex.Store({
 #### Change State ####
 ```js
 store.commit('increment')
+store.commit('incrementBy', 10)
+store.commit('incrementByObject', {
+  amount: 10
+})
+store.commit({
+  type: 'incrementByObject',
+  amount: 10
+})
+
 console.log(store.state.count)
 
 // get values from Component
