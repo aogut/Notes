@@ -9,7 +9,7 @@ const store = new Vuex.Store({
     count: 0
   },
   
-  // this changes state
+  // call store.commit('mutator-by-name', args) to change state
   mutations: {
     increment (state) {
       state.count++
@@ -22,7 +22,7 @@ const store = new Vuex.Store({
     }
   },
   
-  // this allows centralizing computed from Components to store
+  // centralizing computed from Components to store
   getters: {
     doneTodos: state => {
       return state.todos.filter(todo => todo.done)
@@ -31,13 +31,29 @@ const store = new Vuex.Store({
     // this allows calls like store.getters.getTodoById(2)
     getTodoById: (state) => (id) => {
       return state.todos.find(todo => todo.id === id)
-    }    
+    },
+    todoCount: state => {
+      return state.todos.length
+    }
+  },
+  
+  // actions allow async ops; call store.dispatch('function-by-name')
+  actions: {
+    increment (context) {
+      context.commit('increment')
+    },
+    incrementAsync ({ commit }) {
+      setTimeout(() => {
+        commit('increment')
+      }, 1000)
+    }
   }
 })
 ```
 
 #### Change State ####
 ```js
+// change state by mutators
 store.commit('increment')
 store.commit('incrementBy', 10)
 store.commit('incrementByObject', {
@@ -45,6 +61,14 @@ store.commit('incrementByObject', {
 })
 store.commit({
   type: 'incrementByObject',
+  amount: 10
+})
+
+
+// change state by actions
+store.dispatch('increment')
+store.dispatch({
+  type: 'incrementAsync',
   amount: 10
 })
 
