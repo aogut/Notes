@@ -2,8 +2,18 @@
 ## Vue Instance
 ```js
 new Vue({
-  data: {},    // 2-way binding
-  
+  el: '#anID',      // binding element
+  data: {},         // 2-way binding
+  computed: {,      // cached based on dependencies
+    fullname: {
+      get: {},      // getter by default
+      set: {}       // setter
+    }
+  },
+  methods: {},      // not cahced
+  watch: {          // fired whenever watched prop changed
+    watchedProp: {} 
+  },                 
 })
 ```
 
