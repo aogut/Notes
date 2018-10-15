@@ -43,4 +43,36 @@ new Vue({
 
 <!-- directives -->
 <p v-if="seen">Now you see me</p>
+<p v-else="seen">Now you don't see me</p>
+<p v-show="!hidden">Now you see me</p>
+
+<div v-for="(value, key, index) in object">
+  {{ index }}. {{ key }}: {{ value }}
+</div>
 ```
+
+## Caveats on Array
+* push, pop, shift, unshift, splice, sort, reverse are mutation methods and they will trigger view updates
+* filter, concat, slice returns a new array and Vue will detect changes and perform partial DOM update
+
+```js
+var vm = new Vue({
+  data: {
+    name: 'Anika',
+    items: ['a', 'b', 'c']
+  }
+})
+
+vm.items[2] = 'new'             // not
+vm.$set(vm.items, 2, 'new')     // reactive
+
+
+vm.age = 27                     // not
+vm.$set(vm, 'age', 27)          // reactive
+
+
+```
+
+
+
+
