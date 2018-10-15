@@ -54,8 +54,8 @@ new Vue({
 ### Modifiers
 * event modifiers: stop, prevent, capture, self, once, passive
 * key modifiers: enter, tab, delete, esc, space, up, down, left, right
-* customer key modifiers: ```js Vue.config.keyCodes.f1 = 112 ``` to enable @keyup.f1
-* system modifier: ctrl, alt, shift, meta  ```js <div @click.ctrl='doSomething'>Do Something</div>```
+* customer key modifiers: ```Vue.config.keyCodes.f1 = 112 ``` to enable @keyup.f1
+* system modifier: ctrl, alt, shift, meta  ```<div @click.ctrl='doSomething'>Do Something</div>```
 
 ## Caveats on Array
 * push, pop, shift, unshift, splice, sort, reverse are mutation methods and they will trigger view updates
