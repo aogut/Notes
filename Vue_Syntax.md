@@ -38,7 +38,7 @@ new Vue({
 
 <!-- events -->
 <a v-on:click="doSomething"> ... </a>
-<form v-on:submit.prevent="onSubmit"> ... </form>   <!-- modifier prevent calls event.preventDefault() on event -->
+<form v-on:submit.prevent="onSubmit"> ... </form> <!-- modifier prevent calls event.preventDefault() on event -->
 <a @click="doSomething"> ... </a>
 
 <!-- directives -->
@@ -69,8 +69,6 @@ vm.$set(vm.items, 2, 'new')     // reactive
 
 vm.age = 27                     // not
 vm.$set(vm, 'age', 27)          // reactive
-
-
 ```
 
 
