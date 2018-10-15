@@ -29,11 +29,16 @@ new Vue({
 <!-- attr -->
 <button v-bind:disabled="isButtonDisabled">Button</button>
 <a v-bind:href="url"> ... </a>
+<div v-bind:class="{ active: isActive }"></div>
+<div v-bind:class="obj"></div>  <!-- obj: { active: true, 'text-danger': false } -->
+<div v-bind:class="[isActive ? activeClass : '', errorClass]"></div>
+<div v-bind:style="{ color: c, fontSize: s + 'px' }"></div> <!-- data: { c: 'red', s: 30 }  -->
+
 <a :href="url"> ... </a>
 
 <!-- events -->
 <a v-on:click="doSomething"> ... </a>
-<form v-on:submit.prevent="onSubmit"> ... </form>
+<form v-on:submit.prevent="onSubmit"> ... </form>   <!-- modifier prevent calls event.preventDefault() on event -->
 <a @click="doSomething"> ... </a>
 
 <!-- directives -->
