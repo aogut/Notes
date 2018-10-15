@@ -51,6 +51,11 @@ new Vue({
 </div>
 ```
 
+### Modifiers
+* event modifiers: stop, prevent, capture, self, once, passive
+* key modifiers: enter, tab, delete, esc, space, up, down, left, right
+* customer key modifiers: ```js Vue.config.keyCodes.f1 = 112 // enable @keyup.f1 ```
+
 ## Caveats on Array
 * push, pop, shift, unshift, splice, sort, reverse are mutation methods and they will trigger view updates
 * filter, concat, slice returns a new array and Vue will detect changes and perform partial DOM update
