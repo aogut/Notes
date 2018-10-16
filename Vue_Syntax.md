@@ -51,6 +51,23 @@ new Vue({
 </div>
 ```
 
+### Forms
+```html
+<input v-model="message" placeholder="edit me">
+<p>Message is: {{ message }}</p>
+
+<textarea v-model="message2" placeholder="add multiple lines"></textarea>
+<p style="white-space: pre-line;">{{ message }}</p>
+
+<input type="checkbox" id="checkbox" v-model="checked">
+<label for="checkbox">{{ checked }}</label>
+
+<input type="checkbox" v-model="toggle" true-value="yes" false-value="no">  <!-- vm.toggle === 'yes' when checked -->
+```
+
+* form input modifiers: lazy, number, trim
+
+
 ### Modifiers
 * event modifiers: stop, prevent, capture, self, once, passive
 * key modifiers: enter, tab, delete, esc, space, up, down, left, right
