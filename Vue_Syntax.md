@@ -17,6 +17,7 @@ new Vue({
 })
 ```
 
+
 ## HTML
 ```html
 <!-- text -->
@@ -67,12 +68,12 @@ new Vue({
 
 * form input modifiers: lazy, number, trim
 
-
 ### Modifiers
 * event modifiers: stop, prevent, capture, self, once, passive
 * key modifiers: enter, tab, delete, esc, space, up, down, left, right
 * customer key modifiers: ```Vue.config.keyCodes.f1 = 112 ``` to enable @keyup.f1
 * system modifier: ctrl, alt, shift, meta  ```<div @click.ctrl='doSomething'>Do Something</div>```
+
 
 ## Caveats on Array
 * push, pop, shift, unshift, splice, sort, reverse are mutation methods and they will trigger view updates
@@ -95,5 +96,43 @@ vm.$set(vm, 'age', 27)          // reactive
 ```
 
 
+## Components
+* custom element inside a root Vue instance
+* all components need to be registered: globally or locally
+```
+// parent
+new Vue({
+  el: '#blog-demo',
+  data: {
+    posts: [{}, {}],
+    postFontSize: 1
+  },
+  methods: {
+    onEnlargeText: function (enlargeAmount) {
+      this.postFontSize += enlargeAmount
+    }
+  }  
+})
 
+// component
+Vue.component.('blog-post' {
+  props: [],
+  template: '
+    <div class="blog-post">
+      <h3>{{ post.title }}</h3>
+      <button @click="$emit('enlarge-text', 0.1)">
+        Enlarge text
+      </button>
+    </div>  
+  ' 
+})
+
+$emit('custom-event', params)       // sending msg back to parent
+$event                              // accessing event's params at parent
+```
+
+```html
+<blog-post @enlarge-text="postFontSize += $event"></blog-post>      <!-- handle at declaration -->
+<blog-post @enlarge-text="onEnlargeText"></blog-post>               <!-- handle with a parent method -->
+```
 
