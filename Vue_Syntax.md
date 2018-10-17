@@ -197,3 +197,24 @@ provide: function () {
 inject: ['getMap']
 ```
 
+* adding event listeners with ```$on(event, handler)```, ```$once```, ```$off```
+```js
+mounted: function () {
+  this.attachDatepicker('startDateInput')
+  this.attachDatepicker('endDateInput')
+},
+methods: {
+  attachDatepicker: function (refName) {
+    var picker = new Pikaday({
+      field: this.$refs[refName],
+      format: 'YYYY-MM-DD'
+    })
+
+    this.$once('hook:beforeDestroy', function () {
+      picker.destroy()
+    })
+  }
+}
+```
+
+* 
