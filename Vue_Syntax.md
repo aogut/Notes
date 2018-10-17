@@ -175,3 +175,25 @@ Vue.component(
   () => import('./my-async-component')
 )
 ```
+
+* ref to root/child instance
+```js
+this.$root.foo
+this.$root.bar()
+
+this.$parent          // parent
+
+this.$refs.foo        // child
+```
+
+* inject data/methods to all decendent components
+```js
+// parent
+provide: function () {
+  return { getMap: this.getMap }
+}
+
+// decendants
+inject: ['getMap']
+```
+
