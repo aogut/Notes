@@ -127,7 +127,7 @@ Vue.component.('blog-post' {
   ' 
 })
 
-$emit('custom-event', params)       // sending msg back to parent
+$emit('customEvent', params)        // sending msg back to parent
 $event                              // accessing event's params at parent
 ```
 
@@ -136,3 +136,42 @@ $event                              // accessing event's params at parent
 <blog-post @enlarge-text="onEnlargeText"></blog-post>               <!-- handle with a parent method -->
 ```
 
+### Parent-Child Messaging
+* Props - parent passes params to child
+```html
+<blog-post v-bind:comment-ids="[234, 266, 273]" />                  <!-- static array -->
+<blog-post v-bind:title="post.title + ' by ' + post.name" />        <!-- dyanamic data -->
+```
+* child uses local data wrapped in functions
+
+### Slot
+```html
+<navigation-link url="/profile">
+  Your Profile
+</navigation-link>
+
+<a :href="url" class="nav-link">
+  <slot></slot>                                                     <!-- Your Profile -->
+</a>
+
+<div class="container">
+  <h1 slot="header">Here might be a page title</h1>
+</div>  
+```
+
+### Tools
+* Cache Vue components
+```html
+<keep-alive>
+  .....                           <!-- cache states without creating a new Vue rendering -->
+</keep-alive>
+```
+
+* Async Components
+```js
+Vue.component(
+  'async-webpack-example',
+  // The `import` function returns a Promise.
+  () => import('./my-async-component')
+)
+```
