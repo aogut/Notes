@@ -25,5 +25,10 @@ Vue.prototype.$appName = 'My App'
 ```
 
 
-* v-enter: before element is inserted
+* v-enter: starting state
+* v-enter-active
+* v-enter-to
+* v-leave
+* v-leave-active
+* v-leave-to
 
