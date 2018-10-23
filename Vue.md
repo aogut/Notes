@@ -1,4 +1,4 @@
-#### Store ####
+## Store 
 ```js
 const store = new Vuex.Store({
   state: {
@@ -78,7 +78,7 @@ console.log(store.state.count)
 this.$store.state.count
 ```
 
-#### Modules ####
+## Modules
 ```js
 const moduleA = {
   state: { ... },
@@ -99,7 +99,7 @@ store.state.b // -> `moduleB`'s state
 ```
 
 
-#### Helpers ####
+## Helpers
 ```js
 import { mapState } from 'vuex'
 
