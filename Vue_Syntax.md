@@ -217,8 +217,43 @@ methods: {
 }
 ```
 
-* filters
+* Mixins
 ```js
+var myMixin = {
+  created: function () {  }
+}
+
+var Component = Vue.extend({
+  mixins: [myMixin]
+})
+
+// global
+Vue.mixin({
+  created: function () { }
+})
+```
+
+* Directives with hooks: bind, inserted, update, componentUpdated, unbind
+```js
+// global; usage <input v-focus>
+Vue.directive('focus', { })
+
+// local
+var Component = Vue.extend({
+  directives: {
+    focus: { }
+  }
+})
+```
+
+* Plugins
+```js
+Vue.use(aPlugin, { someOpt: true })
+```
+
+* Filters
+```js
+// usage: {{ name | capitalize }}
 Vue.filter('capitalize', function (value) {
   if (!value) return ''
   value = value.toString()
@@ -226,3 +261,18 @@ Vue.filter('capitalize', function (value) {
 })
 ```
 
+## TypeScript Support
+```html
+<template>
+  <div> .... </div>
+</template>
+
+<script>
+  import ... from '...'
+  
+  export default {
+  }
+</script>
+
+<style scoped> ... </style>
+```
