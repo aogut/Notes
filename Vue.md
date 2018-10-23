@@ -3,7 +3,6 @@
 new Vuex.Store({
   state: {
     todos: [
-      { id: 1, text: '...', done: true },
       { id: 2, text: '...', done: false }
     ],  
     count: 0
@@ -11,9 +10,6 @@ new Vuex.Store({
   
   // call store.commit('mutator-by-name', args) to change state
   mutations: {
-    increment (state) {
-      state.count++
-    },
     incrementBy (state, n) {
       state.count += n
     },
@@ -31,9 +27,6 @@ new Vuex.Store({
     // this allows calls like store.getters.getTodoById(2)
     getTodoById: (state) => (id) => {
       return state.todos.find(todo => todo.id === id)
-    },
-    todoCount: state => {
-      return state.todos.length
     }
   },
   
