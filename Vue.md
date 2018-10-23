@@ -2,9 +2,7 @@
 ```js
 new Vuex.Store({
   state: {
-    todos: [
-      { id: 2, text: '...', done: false }
-    ],  
+    todos: [ { id: 2, text: '...', done: false } ],  
     count: 0
   },
   
