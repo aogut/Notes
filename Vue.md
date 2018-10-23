@@ -47,16 +47,12 @@ new Vuex.Store({
 #### Change State ####
 ```js
 // change state by mutators
-store.commit('increment')
 store.commit('incrementBy', 10)
-store.commit('incrementByObject', {
-  amount: 10
-})
+store.commit('incrementByObject', { amount: 10 })
 store.commit({
   type: 'incrementByObject',
   amount: 10
 })
-
 
 // change state by actions
 store.dispatch('increment')
@@ -64,8 +60,6 @@ store.dispatch({
   type: 'incrementAsync',
   amount: 10
 })
-
-console.log(store.state.count)
 
 // get values from Component
 this.$store.state.count
@@ -81,14 +75,10 @@ const moduleA = {
 }
 
 const store = new Vuex.Store({
-  modules: {
-    a: moduleA,
-    b: moduleB
-  }
+  modules: { a: moduleA }
 })
 
 store.state.a // -> `moduleA`'s state
-store.state.b // -> `moduleB`'s state
 ```
 
 
