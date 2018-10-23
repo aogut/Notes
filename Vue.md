@@ -116,3 +116,30 @@ export default {
 }
 ```
 
+## Routing
+```js
+const routes = [ { path: '/foo', component: Foo } ]
+const router = new VueRouter({ routes })
+new Vue({ router })
+
+router.go(-1)     // go back
+router.params     // /user/:username/post/:post_id ==> { username: 'evan', post_id: 123 }
+router.push('home')
+router.push({ path: 'home', params: { id: 1 })
+router.push({ path: 'prod', query: { name: 'iphone' })    // /prod?name=iphone
+```
+
+### Nested Routes
+```js
+/user/evan/profile
+
+routes = [{
+  path: '/user/:id',   component: User,
+  children: [
+    { path: '', component: UserHome },              // /user/1
+    { path: 'profile',  component: UserProfile },   // UserProfile will be rendered inside User's <router-view>
+    { path: 'posts',    component: UserPosts }      // /user/1/posts
+  ]
+}]
+```
+
