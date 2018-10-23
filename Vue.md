@@ -1,6 +1,6 @@
 ## Store 
 ```js
-const store = new Vuex.Store({
+new Vuex.Store({
   state: {
     todos: [
       { id: 1, text: '...', done: true },
