@@ -24,10 +24,12 @@ MongoClient.connect(dsn, (err, db) => {
   const collection = db.collection('value');
   insert(collection, [{ } ....])
     .then((result) => {
-       console.log('inserted ${result.length}')
-    });
-
-  db.close();
+       console.log(`inserted ${result.length}`)
+       db.close();
+    })
+    .catch( err => {
+       process.exit()
+    })
 })
 
 function insert(collection, data) {
