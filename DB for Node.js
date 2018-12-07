@@ -1,4 +1,4 @@
-# Docker
+### Docker
 ```
 docker pull mongo                           
 
@@ -11,3 +11,32 @@ docker start mongodb
 ```
 
 * Robo 3T - Gui
+
+
+### Mongo
+
+```js
+const MongoClient = rquire('mongodb').MongoClient;
+const dsn = 'mongodb://localhost:37017/mydb';
+
+MongoClient.connect(dsn, (err, db) => {
+  if (err) throw err;
+  const collection = db.collection('value');
+  insert(collection, [{ } ....])
+    .then((result) => {
+       console.log('inserted ${result.length}')
+    });
+
+  db.close();
+})
+
+function insert(collection, data) {
+  const promsiedInserts = [];
+  Object.keys(data).forEach((key) => {
+    promisedInserts.push(
+      collection.insertOne({date: key, value: data[key]}})
+    );
+  });
+  return Promise.all(promisedInserts);
+}
+```
